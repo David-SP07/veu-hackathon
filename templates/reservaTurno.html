@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno</title>
+</head>
+<body>
+    <h1>Reservar Turno</h1>
+
+    <!-- Formulario para reservar turno -->
+    <form id="reservar-turno-form" method="POST">
+        <label for="unidad">Unidad:</label>
+        <select id="unidad" name="unidad_id" required>
+            <!-- Aquí se van a cargar las unidades disponibles -->
+        </select>
+        <br><br>
+
+        <label for="centro">Centro:</label>
+        <select id="centro" name="centro_id" required>
+            <!-- Aquí se van a cargar los centros disponibles -->
+            {% for centro in centros %}
+                <option value="{{ centro.id }}">{{ centro.nombre }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" required>
+        <br><br>
+
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="datetime-local" id="fecha_fin" name="fecha_fin" required>
+        <br><br>
+
+        <button type="submit">Reservar</button>
+    </form>
+
+    <div id="mensaje-error" style="color: red; display: none;">Error: No hay unidades disponibles para el turno seleccionado.</div>
+    <div id="mensaje-exito" style="color: green; display: none;">¡Turno reservado exitosamente!</div>
+
+    <script>
+        // Cargar centros y unidades disponibles desde la API
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener centros
+            fetch('/api/centros')
+                .then(response => response.json())
+                .then(data => {
+                    const centros = data.respuesta; // Asegúrate de que el JSON esté bien formado
+                    const centroSelect = document.getElementById('centro');
+                    centros.forEach(centro => {
+                        const option = document.createElement('option');
+                        option.value = centro.id;
+                        option.textContent = centro.nombre;
+                        centroSelect.appendChild(option);
+                    });
+                })
+                .catch(err => console.error('Error al cargar centros:', err));
+
+            // Obtener unidades disponibles cuando se seleccione un centro
+            document.getElementById('centro').addEventListener('change', function() {
+                const centro_id = this.value;
+                fetch(`/api/unidades/${centro_id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const unidades = data.respuesta; // Asegúrate de que el JSON esté bien formado
+                        const unidadSelect = document.getElementById('unidad');
+                        unidadSelect.innerHTML = ''; // Limpiar unidades anteriores
+                        unidades.forEach(unidad => {
+                            const option = document.createElement('option');
+                            option.value = unidad.id;
+                            option.textContent = unidad.nombre;
+                            unidadSelect.appendChild(option);
+                        });
+                    })
+                    .catch(err => console.error('Error al cargar unidades:', err));
+            });
+
+            // Manejar la reserva de turno
+            document.getElementById('reservar-turno-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar que el formulario se envíe de forma convencional
+
+                const unidad_id = document.getElementById('unidad').value;
+                const centro_id = document.getElementById('centro').value;
+                const fecha_inicio = document.getElementById('fecha_inicio').value;
+                const fecha_fin = document.getElementById('fecha_fin').value;
+
+                const data = {
+                    unidad_id,
+                    centro_id,
+                    fecha_inicio,
+                    fecha_fin
+                };
+
+                fetch('/api/reservar-turno', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 201) {
+                        document.getElementById('mensaje-exito').style.display = 'block';
+                        document.getElementById('mensaje-error').style.display = 'none';
+                    } else {
+                        document.getElementById('mensaje-error').textContent = data.respuesta.error;
+                        document.getElementById('mensaje-error').style.display = 'block';
+                        document.getElementById('mensaje-exito').style.display = 'none';
+                    }
+                })
+                .catch(err => {
+                    console.error('Error al reservar turno:', err);
+                    document.getElementById('mensaje-error').style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

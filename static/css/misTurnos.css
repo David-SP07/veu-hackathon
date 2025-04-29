@@ -1,0 +1,198 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f3f1;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #fff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#logo {
+    width: 80px;
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #111;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-nav button {
+    background-color: #111;
+    color: #111;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-nav button:focus {
+    outline: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    .centro-info {
+        padding: 15px;
+    }
+
+    .centro-info p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+
+    .footer-nav button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    .centro-info {
+        padding: 10px;
+    }
+
+    .centro-info p {
+        font-size: 12px;
+    }
+
+    footer {
+        padding: 12px 0;
+    }
+
+    .footer-nav button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    background-color: #151515;
+    font-family: Arial, sans-serif;
+}
+
+/* Parte superior: calendario y formulario */
+main > div:first-child {
+    flex: 1;
+    padding: 20px;
+    background-color: #151515;
+    color: #fff;
+    overflow-y: auto;
+}
+
+main > div:first-child h2 {
+    background-color: #151515;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+main input[type="date"],
+main input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+#reservarTurnoBtn {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #3f3f3f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#reservarTurnoBtn:hover {
+    background-color: #3f3f3f;
+}
+
+/* Parte inferior: lista de turnos */
+main > div:last-child {
+    flex: 1;
+    padding: 20px;
+    background-color: #151515;
+    overflow-y: auto;
+}
+
+#misTurnos{
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+}
+
+main > div:last-child h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+#listaTurnos {
+    list-style: none;
+    padding: 0;
+}
+
+#listaTurnos li {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #3f3f3f;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+}

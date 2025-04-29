@@ -1,0 +1,245 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f3f1;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background-color: #fff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#logo {
+    width: 80px;
+    height: auto;
+}
+
+/* Main content styling */
+main {
+    padding: 15px;
+    margin: 20px auto;
+    width: 100%;
+    
+}
+
+#greeting {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+/* Map container */
+#map {
+    width: 100%;
+    height: 70vh;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Footer and navigation buttons */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #111;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-nav button {
+    background-color: #111;
+    color: #111;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-nav button:focus {
+    outline: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    .centro-info {
+        padding: 15px;
+    }
+
+    .centro-info p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+
+    .footer-nav button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    .centro-info {
+        padding: 10px;
+    }
+
+    .centro-info p {
+        font-size: 12px;
+    }
+
+    footer {
+        padding: 12px 0;
+    }
+
+    .footer-nav button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* Contenedor de la imagen de la unidad */
+#unidad-img-container {
+    text-align: center;
+}
+
+#unidad-img {
+    width: 60%;
+    margin-top: -30px;
+    margin-bottom: -20px;
+    height: auto;
+}
+
+#estado-barra {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.alerta {
+    width: 30%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: lightgrey;
+    opacity: 0;
+}
+
+#verde {
+    background-color: green;
+}
+
+#amarillo {
+    background-color: yellow;
+}
+
+#rojo {
+    background-color: red;
+}
+
+#unidad-nombre{
+    font-size: 26px;
+}
+
+#centro-nombre{
+    font-size: 20px;
+    color: #444;
+    font-style: italic;
+}
+
+#placa{
+    margin-top: 5px;
+    font-size: 16px;
+    color: #444;
+}
+
+#ultimo-mantenimiento{
+    font-size: 16px;
+    color: #444;
+}
+
+.turnos{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+.turno-btn{
+    background-color: #444;
+    font-size: 26px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 1px;
+}
+
+#turnoI{
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+#turnoD{
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.asistencia {
+    display: flex;
+    flex-direction: column; /* botones uno arriba del otro */
+    align-items: center; /* centrar horizontalmente */
+    justify-content: center; /* centrar verticalmente */
+    margin-top: -10px;
+}
+
+.asistencia-btn {
+    padding: 10px 30px;
+    border-radius: 25px;
+    background-color: #2A2A2A;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 7px;
+}
+
+.unidad-info{
+    text-align: center;
+}

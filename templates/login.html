@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>Login - VEU</title>
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <form id="loginForm">
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required><br>
+
+
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="/register">Regístrate</a></p>
+    </main>
+    <footer>
+        <div id="unidad-img-container">
+            <img id="unidad-img" src="static/veuLogoB.png" alt="Vehículo" />
+        </div>
+    </footer>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Evita que el formulario se envíe de manera tradicional
+
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.mensaje === "Login exitoso") {
+                    // Si el login es exitoso, redirige al dashboard o donde sea
+                    window.location.href = '/dashboard';
+                } else {
+                    // Si hay un error de login, muestra el mensaje
+                    alert(data.mensaje);
+                }
+            })
+            .catch(error => console.log('Error:', error));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+main {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 400px;  /* Optional: Limits the width of the form */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #9f9f9f;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    .centro-info {
+        padding: 15px;
+    }
+
+    .centro-info p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 15px 0;
+    }
+
+    .footer-nav button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    .centro-info {
+        padding: 10px;
+    }
+
+    .centro-info p {
+        font-size: 12px;
+    }
+
+    footer {
+        padding: 12px 0;
+    }
+
+    .footer-nav button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+#unidad-img-container {
+    text-align: center;
+    margin-top: 70px;
+}
+
+#unidad-img {
+    width: 40%;
+    height: auto;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #3f3f3f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#email, #password {
+    background-color: #151515;
+    color: #fff;
+    border: none;
+}
+
+button:hover {
+    background-color: #545454;
+}
